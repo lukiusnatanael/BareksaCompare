@@ -9,6 +9,9 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var compareBtn: UIButton!
+    
     var viewModel: HomeViewModel!
     
     init(viewModel: HomeViewModel) {
@@ -22,8 +25,23 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupView()
+    }
+    
+    func setupView() {
+        imageView.image = UIImage(named: "image_bareksa")
+        
+        compareBtn.setTitle("Compare Funds!", for: .normal)
+        compareBtn.titleLabel?.font = UIFont(name: "Montserrat-SemiBold", size: 16.0)
+        compareBtn.setTitleColor(.primaryBtnText, for: .normal)
+        compareBtn.tintColor = .primaryBtnBackground
         
     }
 
+    @IBAction func compareBtnTapped(_ sender: Any) {
+        let compareFundsViewModel = CompareFundsViewModel()
+        let compareFundsViewController = CompareFundsViewController(viewModel: compareFundsViewModel)
+        navigationController?.pushViewController(compareFundsViewController, animated: true)
+    }
+    
 }
