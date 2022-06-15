@@ -33,7 +33,9 @@
                                 <constraint firstAttribute="height" constant="44" id="Jgh-Th-kYS"/>
                             </constraints>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="filled"/>
+                            <buttonConfiguration key="configuration" style="filled" title="Compare Funds!">
+                                <fontDescription key="titleFontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
+                            </buttonConfiguration>
                             <connections>
                                 <action selector="compareBtnTapped:" destination="-1" eventType="touchUpInside" id="ZsL-kE-u1M"/>
                             </connections>

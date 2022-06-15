@@ -102,8 +102,8 @@
 		0C2EAFC4285A314200757EE9 /* BareksaCompare */ = {
 			isa = PBXGroup;
 			children = (
-				0C2EAFE0285A335800757EE9 /* Components */,
 				0C2EAFDC285A328E00757EE9 /* Screens */,
+				0C2EAFE0285A335800757EE9 /* Components */,
 				0C2EAFDB285A328C00757EE9 /* Services */,
 				0C2EAFDA285A328A00757EE9 /* Extensions */,
 				0C2EAFC5285A314200757EE9 /* AppDelegate.swift */,
