@@ -9,7 +9,12 @@ import UIKit
 
 class CompareFundsViewController: UIViewController {
 
+    @IBOutlet weak var firstTabBtn: UIButton!
+    @IBOutlet weak var secondTabBtn: UIButton!
+    @IBOutlet weak var tabMovingView: UIView!
+    
     private var viewModel: CompareFundsViewModel!
+    var currentTab = 0
     
     init() {
         super.init(nibName: "CompareFundsViewController", bundle: nil)
@@ -23,6 +28,7 @@ class CompareFundsViewController: UIViewController {
         super.viewDidLoad()
         configureViewModel()
         setupNavigationBar()
+        setupTabBar()
     }
     
     func configureViewModel() {
@@ -41,6 +47,52 @@ class CompareFundsViewController: UIViewController {
     
     func updateFundsView() {
         
+    }
+    
+    func setupTabBar() {
+        
+        currentTab = 0
+        tabMovingView.backgroundColor = .primaryGreen
+        
+        firstTabBtn.setTitle("Imbal Hasil", for: .normal)
+        firstTabBtn.setTitleColor(.primaryGreen, for: .normal)
+        firstTabBtn.setTitleColor(.primaryGray, for: .highlighted)
+        firstTabBtn.titleLabel?.font = UIFont(name: "OpenSans-Semibold", size: 14.0)
+        
+        secondTabBtn.setTitle("Dana Kelolaan", for: .normal)
+        secondTabBtn.setTitleColor(.secondaryGray, for: .normal)
+        secondTabBtn.setTitleColor(.primaryGray, for: .highlighted)
+        secondTabBtn.titleLabel?.font = UIFont(name: "OpenSans-Semibold", size: 14.0)
+    }
+    
+    @IBAction func tabBarBtnTapped(_ sender: UIButton) {
+        
+        if sender.tag != currentTab {
+            moveTabTo(index: sender.tag)
+        }
+    }
+    
+    func moveTabTo(index: Int) {
+        
+        //TODO: Somehow it doesn't change
+        if index == 0 {
+
+            firstTabBtn.setTitleColor(.primaryGreen, for: .normal)
+            secondTabBtn.setTitleColor(.secondaryGray, for: .normal)
+        } else if index == 1 {
+            firstTabBtn.setTitleColor(.secondaryGray, for: .normal)
+            secondTabBtn.setTitleColor(.primaryGreen, for: .normal)
+        }
+        
+        UIView.animate(withDuration: 0.35, delay: 0.0, options: .curveEaseOut, animations: {
+            if index > self.currentTab {
+                self.tabMovingView.frame.origin.x += self.tabMovingView.frame.size.width
+            } else if index < self.currentTab {
+                self.tabMovingView.frame.origin.x -= self.tabMovingView.frame.size.width
+            }
+        }, completion: {_ in
+            self.currentTab = index
+        })
     }
     
     func setupNavigationBar() {
