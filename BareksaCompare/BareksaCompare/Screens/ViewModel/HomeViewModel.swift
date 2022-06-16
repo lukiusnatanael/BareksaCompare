@@ -7,6 +7,10 @@
 
 import Foundation
 
-final class HomeViewModel {
+final class HomeViewModel: NSObject {
+    
+    override init() {
+        super.init()
+    }
     
 }

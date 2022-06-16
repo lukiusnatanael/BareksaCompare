@@ -7,6 +7,42 @@
 
 import Foundation
 
-final class CompareFundsViewModel {
+final class CompareFundsViewModel: NSObject {
+    
+    private var apiService: APIService!
+    private(set) var compareChartData: CompareChartData! {
+        didSet {
+            self.bindCompareChartDataToController()
+        }
+    }
+    
+    private(set) var compareFundsData: CompareFundsData! {
+        didSet {
+            self.bindCompareFundsDataToController()
+        }
+    }
+    
+    var bindCompareChartDataToController : (() -> ()) = {}
+    var bindCompareFundsDataToController : (() -> ()) = {}
+    
+    
+    override init() {
+        super.init()
+        self.apiService = APIService()
+        doRequestChartData()
+        doRequestFundsData()
+    }
+    
+    func doRequestChartData() {
+        self.apiService.apiToGetChartData { (chartData) in
+            self.compareChartData = chartData
+        }
+    }
+    
+    func doRequestFundsData() {
+        self.apiService.apiToGetFundsData { (fundsData) in
+            self.compareFundsData = fundsData
+        }
+    }
     
 }
