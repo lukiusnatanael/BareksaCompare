@@ -27,6 +27,20 @@ class CompareFundsViewController: UIViewController {
     
     func configureViewModel() {
         self.viewModel = CompareFundsViewModel()
+        self.viewModel.bindCompareChartDataToController = {
+            self.updateChartView()
+        }
+        self.viewModel.bindCompareFundsDataToController = {
+            self.updateFundsView()
+        }
+    }
+    
+    func updateChartView() {
+        
+    }
+    
+    func updateFundsView() {
+        
     }
     
     func setupNavigationBar() {
