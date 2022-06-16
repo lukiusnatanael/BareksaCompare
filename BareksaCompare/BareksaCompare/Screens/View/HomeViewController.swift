@@ -12,11 +12,10 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var compareBtn: UIButton!
     
-    var viewModel: HomeViewModel!
+    private var viewModel: HomeViewModel!
     
-    init(viewModel: HomeViewModel) {
+    init() {
         super.init(nibName: "HomeViewController", bundle: nil)
-        self.viewModel = viewModel
     }
     
     required init?(coder: NSCoder) {
@@ -25,7 +24,12 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureViewModel()
         setupView()
+    }
+    
+    func configureViewModel() {
+        self.viewModel = HomeViewModel()
     }
     
     func setupView() {
@@ -39,8 +43,7 @@ class HomeViewController: UIViewController {
     }
 
     @IBAction func compareBtnTapped(_ sender: Any) {
-        let compareFundsViewModel = CompareFundsViewModel()
-        let compareFundsViewController = CompareFundsViewController(viewModel: compareFundsViewModel)
+        let compareFundsViewController = CompareFundsViewController()
         navigationController?.pushViewController(compareFundsViewController, animated: true)
     }
     

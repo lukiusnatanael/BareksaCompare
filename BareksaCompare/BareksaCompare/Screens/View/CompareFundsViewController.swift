@@ -9,11 +9,10 @@ import UIKit
 
 class CompareFundsViewController: UIViewController {
 
-    var viewModel: CompareFundsViewModel!
+    private var viewModel: CompareFundsViewModel!
     
-    init(viewModel: CompareFundsViewModel) {
+    init() {
         super.init(nibName: "CompareFundsViewController", bundle: nil)
-        self.viewModel = viewModel
     }
     
     required init?(coder: NSCoder) {
@@ -22,7 +21,12 @@ class CompareFundsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureViewModel()
         setupNavigationBar()
+    }
+    
+    func configureViewModel() {
+        self.viewModel = CompareFundsViewModel()
     }
     
     func setupNavigationBar() {

@@ -17,8 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         
         let navigationController = UINavigationController()
-        let homeViewModel = HomeViewModel()
-        let homeViewController = HomeViewController(viewModel: homeViewModel)
+        let homeViewController = HomeViewController()
         navigationController.pushViewController(homeViewController, animated: true)
         
         window?.rootViewController = navigationController
