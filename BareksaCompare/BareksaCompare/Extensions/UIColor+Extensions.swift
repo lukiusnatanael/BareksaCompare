@@ -17,4 +17,16 @@ extension UIColor {
         return UIColor.black
     }
     
+    class var primaryGreen: UIColor {
+        return UIColor(red: 75/255, green: 139/255, blue: 38/255, alpha: 1.0)
+    }
+    
+    class var primaryGray: UIColor {
+        return UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.6)
+    }
+    
+    class var secondaryGray: UIColor {
+        return UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.38)
+    }
+    
 }
