@@ -37,8 +37,8 @@ class HomeViewController: UIViewController {
         
         compareBtn.setTitle("Compare Funds!", for: .normal)
         compareBtn.titleLabel?.font = UIFont(name: "Montserrat-SemiBold", size: 16.0)
-        compareBtn.setTitleColor(.primaryBtnText, for: .normal)
-        compareBtn.tintColor = .primaryBtnBackground
+        compareBtn.setTitleColor(.black, for: .normal)
+        compareBtn.tintColor = .green500
         
     }
 
