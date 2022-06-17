@@ -10,6 +10,8 @@ import Foundation
 final class CompareFundsViewModel: NSObject {
     
     private var apiService: APIService!
+    var timeFrame = ["1W", "1M", "1Y", "3Y", "5Y", "10Y", "All"]
+    var tabBar = ["Imbal Hasil", "Dana Kelolaan"]
     private(set) var compareChartData: CompareChartData! {
         didSet {
             self.bindCompareChartDataToController()
