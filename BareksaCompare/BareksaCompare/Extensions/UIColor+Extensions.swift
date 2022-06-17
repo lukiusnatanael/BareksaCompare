@@ -9,24 +9,40 @@ import UIKit
 
 extension UIColor {
     
-    class var primaryBtnBackground: UIColor {
+    class var green50: UIColor {
+        return UIColor(red: 226/255, green: 235/255, blue: 221/255, alpha: 1.0)
+    }
+    
+    class var green500: UIColor {
         return UIColor(red: 130/255, green: 195/255, blue: 65/255, alpha: 1.0)
     }
     
-    class var primaryBtnText: UIColor {
-        return UIColor.black
+    class var green700: UIColor {
+        return UIColor(red: 95/255, green: 159/255, blue: 47/255, alpha: 1.0)
     }
     
-    class var primaryGreen: UIColor {
+    class var green800: UIColor {
         return UIColor(red: 75/255, green: 139/255, blue: 38/255, alpha: 1.0)
     }
     
-    class var primaryGray: UIColor {
+    class var black38: UIColor {
+        return UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.38)
+    }
+    
+    class var black54: UIColor {
+        return UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.54)
+    }
+    
+    class var black60: UIColor {
         return UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.6)
     }
     
-    class var secondaryGray: UIColor {
-        return UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.38)
+    class var purple50: UIColor {
+        return UIColor(red: 224/255, green: 219/255, blue: 235/255, alpha: 1.0)
+    }
+    
+    class var navy50: UIColor {
+        return UIColor(red: 224/255, green: 232/255, blue: 238/255, alpha: 1.0)
     }
     
 }
