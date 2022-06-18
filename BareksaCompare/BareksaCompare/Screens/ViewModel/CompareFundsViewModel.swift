@@ -31,7 +31,8 @@ final class CompareFundsViewModel: NSObject {
     override init() {
         super.init()
         self.apiService = APIService()
-        doRequestChartData()
+//      TODO: Still Failed to Mapping Model with dynamic keys
+//        doRequestChartData()
         doRequestFundsData()
     }
     
