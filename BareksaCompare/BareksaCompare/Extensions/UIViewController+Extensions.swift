@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 extension UIViewController {
     
@@ -19,6 +20,15 @@ extension UIViewController {
         guard let url = URL(string: value.imageAvatar) else {
             return
         }
+        
+        imageView.kf.setImage(
+            with: url,
+            placeholder: UIImage(named: "image_placeholder"),
+            options: [.cacheOriginalImage],
+            completionHandler:  { _ in
+                //Image Loaded
+            }
+        )
 
         DispatchQueue.main.async {
             if let imageData = try? Data(contentsOf: url) {
