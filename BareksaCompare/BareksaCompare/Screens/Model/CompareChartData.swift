@@ -11,41 +11,22 @@ struct CompareChartData: Decodable {
     var code: Int
     var message: String
     var error: String
-    var data: FundChart
+    var data: [String: FundChart]
     var totalData: Int
     
     enum CodingKeys: String, CodingKey {
-        case code, message, error
-        case data = "data"
+        case code, message, error, data
         case totalData = "total_data"
     }
 }
 
 struct FundChart: Decodable {
-    var category: String
     var data: [ChartData]
     var error: String
-    
-    enum CodingKeys: CodingKey {
-        case data, error
-    }
-    
-    init(from decoder: Decoder) throws {
-
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-
-        data = try container.decode([ChartData].self, forKey: CodingKeys.data)
-        error = try container.decode(String.self, forKey: CodingKeys.error)
-        category = container.codingPath.first!.stringValue
-    }
 }
 
 struct ChartData: Decodable {
     var date: String
     var value: Double
     var growth: Double
-    
-    enum CodingKeys: String, CodingKey {
-        case date, value, growth
-    }
 }
