@@ -232,16 +232,24 @@ class CompareFundsViewController: UIViewController {
         
     }
     
+    func doAlertWith(message: String) {
+        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        let btnOk = UIAlertAction(title: "OK", style: .default, handler: nil)
+        
+        alert.addAction(btnOk)
+        present(alert, animated: true, completion: nil)
+    }
+    
     @objc func detailBtnTapped(_ sender: UIButton) {
         let tag = sender.tag
         let code = viewModel.compareFundsData.data[tag].code
-        print("Detail Button Tapped with code \(code)")
+        self.doAlertWith(message: "Show Detail Fund Product with code \(code)")
     }
     
     @objc func buyBtnTapped(sender: UIButton) {
         let tag = sender.tag
         let code = viewModel.compareFundsData.data[tag].code
-        print("Buy Button Tapped with code \(code)")
+        self.doAlertWith(message: "Buy Fund Product with code \(code)")
     }
     
     @objc func timeFrameBtnTapped(_ sender: UIButton) {
