@@ -83,11 +83,11 @@ struct FundDetail: Decodable {
     
     func getReturnString() -> String {
         if self.type == "Pasar Uang" {
-            return String(format: "%.2f", self.returnOneYear) + "% / thn"
+            return String(format: "%.2f", self.returnOneYear).replacingOccurrences(of: ".", with: ",") + "% / thn"
         } else if self.type == "Pendapatan Tetap" || self.type == "Campuran" {
-            return String(format: "%.2f", self.returnThreeYear) + "% / 3 thn"
+            return String(format: "%.2f", self.returnThreeYear).replacingOccurrences(of: ".", with: ",") + "% / 3 thn"
         } else if self.type == "Saham" {
-            return String(format: "%.2f", self.returnFiveYear) + "% / 5 thn"
+            return String(format: "%.2f", self.returnFiveYear).replacingOccurrences(of: ".", with: ",") + "% / 5 thn"
         } else {
             return ""
         }
@@ -95,7 +95,7 @@ struct FundDetail: Decodable {
     
     func getAumString() -> String {
         let aumValue = self.totalUnit * self.nav
-        return String(format: "%.2f %@", getAmountDecimal(value: aumValue), getAmountPostfix(value: aumValue))
+        return String(format: "%.2f %@", getAmountDecimal(value: aumValue), getAmountPostfix(value: aumValue)).replacingOccurrences(of: ".", with: ",")
     }
     
     func getMinSubscriptionString() -> String {
