@@ -29,14 +29,6 @@ extension UIViewController {
                 //Image Loaded
             }
         )
-
-        DispatchQueue.main.async {
-            if let imageData = try? Data(contentsOf: url) {
-                if let loadedImage = UIImage(data: imageData) {
-                    imageView.image = loadedImage
-                }
-            }
-        }
         view.addSubview(imageView)
         
         NSLayoutConstraint(item: imageView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 12.0).isActive = true
