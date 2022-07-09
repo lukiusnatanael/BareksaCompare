@@ -96,7 +96,13 @@ class CompareFundsViewController: UIViewController {
     }
     
     func updateChartView() {
-        
+        DispatchQueue.main.async {
+            //create dots graphic
+            //create chart background
+            //create chart baseline time and percentage
+            //create chart graphic line
+//            self.setupDataToGraphic()
+        }
     }
     
     func updateFundsView() {
