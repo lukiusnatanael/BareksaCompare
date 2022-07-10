@@ -7,5 +7,6 @@ target 'BareksaCompare' do
 
   # Pods for BareksaCompare
 	pod 'Kingfisher', '6.3.1'
+  pod 'Charts'
 
 end
