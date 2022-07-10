@@ -168,28 +168,40 @@ class CompareFundsViewController: UIViewController, ChartViewDelegate {
     }
     
     func setupChartView() {
+        lineChartView.delegate = self
+        lineChartView.setLineChartData(xValues: viewModel.arrayTime, dataEntries: viewModel.fundChartData, label: "")
+        
+        lineChartView.leftAxis.enabled = false
+        
         let rightAxis = lineChartView.rightAxis
         rightAxis.labelFont = UIFont(name: "Montserrat", size: 10.0)!
-        rightAxis.setLabelCount(5, force: false)
-        rightAxis.labelTextColor = .black60
+        rightAxis.setLabelCount(5, force: true)
         rightAxis.labelPosition = .outsideChart
+        rightAxis.labelTextColor = .black60
+        rightAxis.gridColor = .black10
+        rightAxis.drawAxisLineEnabled = false
+        rightAxis.xOffset = 18.0
+        rightAxis.valueFormatter = LineChartPercentFormatter()
         
         let xAxis = lineChartView.xAxis
-        xAxis.labelPosition = .bottom
         xAxis.labelFont = UIFont(name: "Montserrat", size: 10.0)!
-        xAxis.setLabelCount(5, force: false)
+        xAxis.setLabelCount(5, force: true)
+        xAxis.labelPosition = .bottom
         xAxis.labelTextColor = .black60
+        xAxis.gridColor = .clear
         xAxis.axisLineColor = .black10
+        xAxis.drawAxisLineEnabled = true
+        xAxis.yOffset = 9.0
         
-        lineChartView.data = viewModel.lineChartData
-        lineChartView.leftAxis.enabled = false
-        lineChartView.rightAxis.drawAxisLineEnabled = false
-        lineChartView.xAxis.enabled = false
+        let legend = lineChartView.legend
+        legend.horizontalAlignment = .left
+        legend.verticalAlignment = .top
+        legend.orientation = .horizontal
+        legend.drawInside = false
+        legend.enabled = false
+        
         lineChartView.pinchZoomEnabled = false
         lineChartView.setScaleEnabled(false)
-        lineChartView.legend.enabled = false
-        lineChartView.setViewPortOffsets(left: 0, top: 0, right: 30, bottom: 0)
-        
         lineChartView.animate(xAxisDuration: 1.0)
     }
     
