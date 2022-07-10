@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Charts
 
 enum ButtonState {
     case primary
@@ -13,7 +14,7 @@ enum ButtonState {
     case plain
 }
 
-class CompareFundsViewController: UIViewController {
+class CompareFundsViewController: UIViewController, ChartViewDelegate {
 
     @IBOutlet weak var tabBarStackView: UIStackView!
     @IBOutlet weak var tabMovingView: UIView!
@@ -23,6 +24,8 @@ class CompareFundsViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
+    
+    @IBOutlet weak var lineChartView: LineChartView!
     
     @IBOutlet weak var productStackView: UIStackView!
     @IBOutlet weak var fundsTypeStackView: UIStackView!
@@ -37,7 +40,6 @@ class CompareFundsViewController: UIViewController {
     
     private var viewModel: CompareFundsViewModel!
     var currentTab = 0
-    var currentTimeTab = 2
     var tabBtnArray: [UIButton] = []
     var timeBtnArray: [UIButton] = []
     
@@ -101,7 +103,7 @@ class CompareFundsViewController: UIViewController {
             //create chart background
             //create chart baseline time and percentage
             //create chart graphic line
-//            self.setupDataToGraphic()
+            self.setupDataToLineChart()
         }
     }
     
@@ -132,20 +134,20 @@ class CompareFundsViewController: UIViewController {
             self.setSelectedTabButton(index: self.currentTab)
         }
         
-        currentTimeTab = 2
+        viewModel.timeFrameIndex = 2
         timeFrameMovingView.backgroundColor = .green800
         for i in 0..<viewModel.timeFrame.count {
             let button = createButtonWith(title: viewModel.timeFrame[i], textColor: .black54, font: UIFont(name: "Montserrat-Medium", size: 12.0)!)
             button.tag = i
             button.addTarget(self, action: #selector(timeFrameBtnTapped(_ :)), for: .touchUpInside)
-            if i == currentTimeTab {
+            if i == viewModel.timeFrameIndex {
                 button.setTitleColor(.green700, for: .normal)
             }
             timeBtnArray.append(button)
             timeFrameStackView.addArrangedSubview(button)
         }
         DispatchQueue.main.async {
-            self.setSelectedTimeFrameButton(index: self.currentTimeTab)
+            self.setSelectedTimeFrameButton()
         }
     }
     
@@ -158,6 +160,37 @@ class CompareFundsViewController: UIViewController {
             indicatorView.style = .white
         }
         showLoading()
+    }
+    
+    func setupDataToLineChart() {
+        viewModel.setupChartData()
+        setupChartView()
+    }
+    
+    func setupChartView() {
+        let rightAxis = lineChartView.rightAxis
+        rightAxis.labelFont = UIFont(name: "Montserrat", size: 10.0)!
+        rightAxis.setLabelCount(5, force: false)
+        rightAxis.labelTextColor = .black60
+        rightAxis.labelPosition = .outsideChart
+        
+        let xAxis = lineChartView.xAxis
+        xAxis.labelPosition = .bottom
+        xAxis.labelFont = UIFont(name: "Montserrat", size: 10.0)!
+        xAxis.setLabelCount(5, force: false)
+        xAxis.labelTextColor = .black60
+        xAxis.axisLineColor = .black10
+        
+        lineChartView.data = viewModel.lineChartData
+        lineChartView.leftAxis.enabled = false
+        lineChartView.rightAxis.drawAxisLineEnabled = false
+        lineChartView.xAxis.enabled = false
+        lineChartView.pinchZoomEnabled = false
+        lineChartView.setScaleEnabled(false)
+        lineChartView.legend.enabled = false
+        lineChartView.setViewPortOffsets(left: 0, top: 0, right: 30, bottom: 0)
+        
+        lineChartView.animate(xAxisDuration: 1.0)
     }
     
     func setupDataToView() {
@@ -214,22 +247,22 @@ class CompareFundsViewController: UIViewController {
         
     }
     
-    func setSelectedTimeFrameButton(index: Int) {
-        timeFrameMovingView.center.x = timeBtnArray[index].center.x
+    func setSelectedTimeFrameButton() {
+        timeFrameMovingView.center.x = timeBtnArray[viewModel.timeFrameIndex].center.x
     }
     
     func moveTimeFrameTo(index: Int) {
-        
         timeBtnArray[index].setTitleColor(.green700, for: .normal)
-        timeBtnArray[currentTimeTab].setTitleColor(.black54, for: .normal)
+        timeBtnArray[viewModel.timeFrameIndex].setTitleColor(.black54, for: .normal)
         
+        viewModel.timeFrameIndex = index
         UIView.animate(withDuration: 0.35, delay: 0.0, options: .curveEaseOut, animations: {
-            self.setSelectedTimeFrameButton(index: index)
+            self.setSelectedTimeFrameButton()
         }, completion: {_ in
             
         })
-        self.currentTimeTab = index
         
+        setupDataToLineChart()
     }
     
     func doAlertWith(message: String) {
@@ -257,7 +290,7 @@ class CompareFundsViewController: UIViewController {
         let time = viewModel.timeFrame[tag]
         print("Time Frame Button Tapped with value \(time)")
         
-        if tag != currentTimeTab {
+        if tag != viewModel.timeFrameIndex {
             moveTimeFrameTo(index: tag)
         }
     }

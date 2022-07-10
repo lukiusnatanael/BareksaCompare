@@ -22,6 +22,7 @@
                 <outlet property="fundsTypeStackView" destination="hLy-3u-o63" id="FNa-pP-nFN"/>
                 <outlet property="indicatorView" destination="NDd-Ds-NO6" id="Jb8-o4-Nci"/>
                 <outlet property="launchingStackView" destination="ClQ-XL-9VL" id="hLf-tA-14G"/>
+                <outlet property="lineChartView" destination="BAM-4k-oKe" id="bYj-Wz-Cfl"/>
                 <outlet property="loadingView" destination="eSr-pw-WDA" id="LUx-x6-7sY"/>
                 <outlet property="minPurchaseStackView" destination="mz6-ra-Ltp" id="W62-iK-fot"/>
                 <outlet property="productStackView" destination="MT7-mX-9Hy" id="tkQ-Iz-95s"/>
@@ -83,12 +84,15 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eSr-pw-WDA" userLabel="LoadingView">
                     <rect key="frame" x="0.0" y="81" width="414" height="781"/>
                     <subviews>
-                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="NDd-Ds-NO6">
-                            <rect key="frame" x="197" y="380" width="20" height="20"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="NDd-Ds-NO6">
+                            <rect key="frame" x="197" y="380.5" width="20" height="20"/>
                         </activityIndicatorView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="NDd-Ds-NO6" firstAttribute="centerX" secondItem="eSr-pw-WDA" secondAttribute="centerX" id="Gok-OJ-mbb"/>
+                        <constraint firstItem="NDd-Ds-NO6" firstAttribute="centerY" secondItem="eSr-pw-WDA" secondAttribute="centerY" id="Hav-By-B8O"/>
+                    </constraints>
                 </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L7d-We-5Ff">
                     <rect key="frame" x="0.0" y="81" width="414" height="781"/>
@@ -98,9 +102,29 @@
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L6z-kx-YPy" userLabel="Chart View">
                                     <rect key="frame" x="16" y="16" width="382" height="250"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J7h-ml-gPb">
+                                            <rect key="frame" x="0.0" y="0.0" width="382" height="24"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="24" id="OKO-va-ipR"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BAM-4k-oKe" customClass="LineChartView" customModule="Charts">
+                                            <rect key="frame" x="0.0" y="36" width="382" height="214"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </view>
+                                    </subviews>
                                     <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
+                                        <constraint firstItem="BAM-4k-oKe" firstAttribute="leading" secondItem="L6z-kx-YPy" secondAttribute="leading" id="1hS-so-s9F"/>
+                                        <constraint firstItem="BAM-4k-oKe" firstAttribute="top" secondItem="J7h-ml-gPb" secondAttribute="bottom" constant="12" id="4i9-NR-K80"/>
+                                        <constraint firstAttribute="trailing" secondItem="BAM-4k-oKe" secondAttribute="trailing" id="Cbf-ci-OfP"/>
+                                        <constraint firstItem="J7h-ml-gPb" firstAttribute="top" secondItem="L6z-kx-YPy" secondAttribute="top" id="VsJ-Tj-1zE"/>
+                                        <constraint firstAttribute="bottom" secondItem="BAM-4k-oKe" secondAttribute="bottom" id="Zw0-pd-oie"/>
                                         <constraint firstAttribute="height" constant="250" id="eCh-xU-E6d"/>
+                                        <constraint firstItem="J7h-ml-gPb" firstAttribute="leading" secondItem="L6z-kx-YPy" secondAttribute="leading" id="pOq-3h-YKk"/>
+                                        <constraint firstAttribute="trailing" secondItem="J7h-ml-gPb" secondAttribute="trailing" id="yJU-T1-btA"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W2M-0r-VBi" userLabel="Time Filter View">
