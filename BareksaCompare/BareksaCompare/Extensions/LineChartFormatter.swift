@@ -42,6 +42,7 @@ extension LineChartView {
             chartDataSet.drawHorizontalHighlightIndicatorEnabled = false
             chartDataSet.drawVerticalHighlightIndicatorEnabled = true
             chartDataSet.highlightColor = .black10
+            chartDataSet.valueTextColor = .clear
             arrayDataSet.append(chartDataSet)
         }
         

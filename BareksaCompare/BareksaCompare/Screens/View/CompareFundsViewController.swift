@@ -200,6 +200,7 @@ class CompareFundsViewController: UIViewController, ChartViewDelegate {
         legend.drawInside = false
         legend.enabled = false
         
+        lineChartView.setViewPortOffsets(left: 20, top: 8, right: 48, bottom: 24)
         lineChartView.pinchZoomEnabled = false
         lineChartView.setScaleEnabled(false)
         lineChartView.animate(xAxisDuration: 1.0)

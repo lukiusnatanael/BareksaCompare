@@ -85,7 +85,7 @@ final class CompareFundsViewModel: NSObject {
             var xPoint = 0.0
             for i in startIndex..<dataCount {
                 lineData.append(ChartDataEntry(x: xPoint, y: fundData.value.data[i].growth))
-                arrTime.append(fundData.value.data[i].date)
+                arrTime.append(formatStringToDate(value: fundData.value.data[i].date))
                 xPoint += 1.0
             }
             arrayTime.append(arrTime)
@@ -93,4 +93,58 @@ final class CompareFundsViewModel: NSObject {
         }
     }
     
+    func formatStringToDate(value: String) -> String {
+        let arrDate = value.components(separatedBy: "-")
+        let year = arrDate[0].suffix(2)
+        let month = arrDate[1]
+        let day = arrDate[2]
+        
+        switch(timeFrameIndex) {
+        case 0:
+            return day + " " + formatMonthToString(month)
+        case 1:
+            return day + " " + formatMonthToString(month)
+        case 2:
+            return formatMonthToString(month) + " " + year
+        case 3:
+            return formatMonthToString(month) + " " + year
+        case 4:
+            return formatMonthToString(month) + " " + year
+        case 5:
+            return formatMonthToString(month) + " " + year
+        default:
+            return formatMonthToString(month) + " " + year
+        }
+    }
+    
+    func formatMonthToString(_ value: String) -> String {
+        switch(value) {
+        case "01":
+            return "Jan"
+        case "02":
+            return "Feb"
+        case "03":
+            return "Mar"
+        case "04":
+            return "Apr"
+        case "05":
+            return "Mei"
+        case "06":
+            return "Jun"
+        case "07":
+            return "Jul"
+        case "08":
+            return "Agu"
+        case "09":
+            return "Sep"
+        case "10":
+            return "Okt"
+        case "11":
+            return "Nov"
+        case "12":
+            return "Des"
+        default:
+            return ""
+        }
+    }
 }
