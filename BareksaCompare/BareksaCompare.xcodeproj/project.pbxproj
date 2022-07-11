@@ -18,6 +18,8 @@
 		0C2EAFEB285A33A400757EE9 /* CompareFundsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C2EAFE9285A33A400757EE9 /* CompareFundsViewController.xib */; };
 		0C2EAFED285A33B000757EE9 /* CompareFundsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2EAFEC285A33B000757EE9 /* CompareFundsViewModel.swift */; };
 		0C2EB014285A420800757EE9 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2EB013285A420800757EE9 /* UIColor+Extensions.swift */; };
+		0C82CDAE287ACE1C00A71C01 /* LineChartFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C82CDAD287ACE1C00A71C01 /* LineChartFormatter.swift */; };
+		0C82CDB2287ADAA500A71C01 /* LineChartPercentFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C82CDB1287ADAA500A71C01 /* LineChartPercentFormatter.swift */; };
 		0C9EF841285D0BB200BA4919 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9EF840285D0BB200BA4919 /* UIViewController+Extensions.swift */; };
 		0CEB570A285B7C52005BADE8 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEB5709285B7C52005BADE8 /* APIService.swift */; };
 		0CEB570C285B7D76005BADE8 /* CompareChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEB570B285B7D76005BADE8 /* CompareChartData.swift */; };
@@ -85,6 +87,8 @@
 		0C2EAFFF285A3E3800757EE9 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		0C2EB000285A3E3800757EE9 /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.ttf"; sourceTree = "<group>"; };
 		0C2EB013285A420800757EE9 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		0C82CDAD287ACE1C00A71C01 /* LineChartFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartFormatter.swift; sourceTree = "<group>"; };
+		0C82CDB1287ADAA500A71C01 /* LineChartPercentFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartPercentFormatter.swift; sourceTree = "<group>"; };
 		0C9EF840285D0BB200BA4919 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		0CEB5709285B7C52005BADE8 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		0CEB570B285B7D76005BADE8 /* CompareChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareChartData.swift; sourceTree = "<group>"; };
@@ -155,6 +159,8 @@
 			children = (
 				0C2EB013285A420800757EE9 /* UIColor+Extensions.swift */,
 				0C9EF840285D0BB200BA4919 /* UIViewController+Extensions.swift */,
+				0C82CDAD287ACE1C00A71C01 /* LineChartFormatter.swift */,
+				0C82CDB1287ADAA500A71C01 /* LineChartPercentFormatter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -263,7 +269,6 @@
 				ED81A1D71E5ECAF57A0BD6B2 /* Pods-BareksaCompare.debug.xcconfig */,
 				F512B8D855D4C6DED2190296 /* Pods-BareksaCompare.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -423,7 +428,9 @@
 				0C2EAFC6285A314200757EE9 /* AppDelegate.swift in Sources */,
 				0C2EAFE4285A337A00757EE9 /* HomeViewController.swift in Sources */,
 				0C9EF841285D0BB200BA4919 /* UIViewController+Extensions.swift in Sources */,
+				0C82CDB2287ADAA500A71C01 /* LineChartPercentFormatter.swift in Sources */,
 				0C2EAFED285A33B000757EE9 /* CompareFundsViewModel.swift in Sources */,
+				0C82CDAE287ACE1C00A71C01 /* LineChartFormatter.swift in Sources */,
 				0CEB570E285B7DC1005BADE8 /* CompareFundsData.swift in Sources */,
 				0CEB570C285B7D76005BADE8 /* CompareChartData.swift in Sources */,
 				0C2EB014285A420800757EE9 /* UIColor+Extensions.swift in Sources */,
